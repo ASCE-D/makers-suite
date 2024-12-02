@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yourusername/project-name/internal/handlers"
-	"github.com/yourusername/project-name/pkg/database"
+	"github.com/ASCE-D/makers-suite/internal/handlers"
+	"github.com/ASCE-D/makers-suite/pkg/database"
 )
 
 func main() {
