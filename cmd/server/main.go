@@ -6,6 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/ASCE-D/makers-suite/internal/handlers"
 	"github.com/ASCE-D/makers-suite/pkg/database"
+	"github.com/ASCE-D/makers-suite/internal/models"
+
 )
 
 func main() {
@@ -14,6 +16,13 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
+
+	err = db.AutoMigrate(&models.User{}, &models.Space{}, &models.Interest{}, &models.UserInterest{}, &models.SpaceMember{})
+    if err != nil {
+        log.Fatal("Failed to auto migrate:", err)
+    }
+
+    log.Println("Migration complete")
 
 	// Initialize router
 	r := gin.Default()
